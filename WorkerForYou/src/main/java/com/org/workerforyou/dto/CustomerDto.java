@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 public class CustomerDto {
 
-	private Integer id;
+
 	private String name;
 	
 }
