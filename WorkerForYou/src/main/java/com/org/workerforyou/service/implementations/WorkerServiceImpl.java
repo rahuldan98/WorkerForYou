@@ -7,16 +7,17 @@ import org.springframework.stereotype.Service;
 
 import com.org.workerforyou.dto.WorkerDto;
 import com.org.workerforyou.exception.DuplicateWorkerException;
+import com.org.workerforyou.exception.WorkerNotFoundException;
 import com.org.workerforyou.model.Customer;
 import com.org.workerforyou.model.Worker;
 import com.org.workerforyou.repository.IWorkerRespository;
 import com.org.workerforyou.service.IWorkerService;
 import com.org.workerforyou.util.converter.WorkerConverter;
-
+import java.util.Set;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @Service
+@AllArgsConstructor
 public class WorkerServiceImpl implements IWorkerService {
 
 	private IWorkerRespository workerRepository;
@@ -38,13 +39,13 @@ public class WorkerServiceImpl implements IWorkerService {
 	@Override
 	public Worker view(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return workerRepository.findById(id).orElseThrow(()->  new WorkerNotFoundException("worker not found"));
 	}
 
 	@Override
 	public List<Worker> viewAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return workerRepository.findAll();
 	}
 
 	@Override
