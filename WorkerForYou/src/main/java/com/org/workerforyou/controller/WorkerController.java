@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.org.workerforyou.dto.WorkerDto;
@@ -13,27 +18,29 @@ import com.org.workerforyou.service.IWorkerService;
 
 import lombok.AllArgsConstructor;
 
+
 @AllArgsConstructor
 @RestController
+@RequestMapping("/worker")
 public class WorkerController {
 
 	private IWorkerService workerService;
 
-	
-	public ResponseEntity<Worker> register(WorkerDto workerDto) {
-		// TODO Auto-generated method stub
+	@PostMapping("/register")
+	public ResponseEntity<Worker> register( @RequestBody WorkerDto workerDto) {
+		
 		return new ResponseEntity<>(workerService.register(workerDto),HttpStatus.CREATED);
 	}
 
-	
-	public ResponseEntity<Worker> view(Integer id) {
-		// TODO Auto-generated method stub
+	@GetMapping("/{id}")
+	public ResponseEntity<Worker> view(@PathVariable Integer id) {
+		
 		return new ResponseEntity<>(workerService.view(id),HttpStatus.CREATED);
 	}
 
-	
+	@GetMapping
 	public ResponseEntity< List<Worker>> viewAll() {
-		// TODO Auto-generated method stub
+		
 		return new ResponseEntity<>(workerService.viewAll(),HttpStatus.CREATED);
 	}
 
