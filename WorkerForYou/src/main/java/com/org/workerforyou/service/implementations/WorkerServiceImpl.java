@@ -50,14 +50,21 @@ public class WorkerServiceImpl implements IWorkerService {
 
 	@Override
 	public Worker update(Integer id, WorkerDto workerdto) {
-		// TODO Auto-generated method stub
-		return null;
+		
+				 Worker worker= workerRepository.findById(id).orElseThrow(()-> new WorkerNotFoundException("worker not found"));
+				 worker.setUsername(workerdto.getUsername());
+				 worker.setRole(workerdto.getRole());
+				 
+				return  workerRepository.save(worker);
 	}
 
 	@Override
 	public Worker delete(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Worker worker= workerRepository.findById(id).orElseThrow(()-> new WorkerNotFoundException("worker not found"));
+		 workerRepository.delete(worker);
+		 return worker;
+		 
 	}
 
 	@Override

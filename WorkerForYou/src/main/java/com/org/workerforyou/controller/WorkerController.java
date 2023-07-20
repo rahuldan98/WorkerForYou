@@ -47,7 +47,7 @@ public class WorkerController {
 		return new ResponseEntity<>(workerService.viewAll(),HttpStatus.OK);
 	}
 
-	@PatchMapping("/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Worker> update(@PathVariable Integer id, @RequestBody WorkerDto workerdto) {
 		
 		return new ResponseEntity<Worker> (workerService.update(id, workerdto),HttpStatus.OK);
