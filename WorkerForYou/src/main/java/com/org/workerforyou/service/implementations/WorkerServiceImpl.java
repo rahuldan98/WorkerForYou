@@ -9,6 +9,7 @@ import com.org.workerforyou.dto.WorkerDto;
 import com.org.workerforyou.exception.DuplicateWorkerException;
 import com.org.workerforyou.exception.WorkerNotFoundException;
 import com.org.workerforyou.model.Customer;
+import com.org.workerforyou.model.Request;
 import com.org.workerforyou.model.Worker;
 import com.org.workerforyou.repository.IWorkerRespository;
 import com.org.workerforyou.service.IWorkerService;
@@ -66,9 +67,16 @@ public class WorkerServiceImpl implements IWorkerService {
 		 return worker;
 		 
 	}
+	
 
 	@Override
 	public Customer acceptRequst(Integer requestId, Integer acceptanceFlag) {
+		
+		return null;
+	}
+
+	@Override
+	public List<Request> viewRequest(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

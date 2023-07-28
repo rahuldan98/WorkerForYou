@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.org.workerforyou.dto.WorkerDto;
 import com.org.workerforyou.model.Customer;
+import com.org.workerforyou.model.Request;
 import com.org.workerforyou.model.Worker;
 
 public interface IWorkerService {
@@ -17,6 +18,8 @@ public interface IWorkerService {
 	public Worker update(Integer id, WorkerDto workerdto);
 
 	public Worker delete(Integer id);
+	
+	public List<Request> viewRequest(Integer id);
 
 	public Customer acceptRequst(Integer requestId, Integer acceptanceFlag);
 
