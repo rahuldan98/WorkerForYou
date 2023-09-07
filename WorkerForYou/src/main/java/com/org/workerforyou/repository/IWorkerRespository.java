@@ -12,5 +12,6 @@ import com.org.workerforyou.model.Worker;
 public interface IWorkerRespository extends JpaRepository<Worker, Integer> {
 
 	Optional<Worker> findByUsername(String username);
+	
 
 }
