@@ -24,46 +24,42 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RequestMapping("/customer")
 public class CustomerController {
-	
+
 	private ICustomerService customerService;
-	
-	
+
 	@PostMapping("/register")
 	public ResponseEntity<Customer> register(@RequestBody CustomerDto cutomerdto) {
-		// TODO Auto-generated method stub
-		
-		return new ResponseEntity<>(customerService.register(cutomerdto),HttpStatus.CREATED);
+
+		return new ResponseEntity<>(customerService.register(cutomerdto), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Customer> view(@PathVariable Integer id) {
-	
-		return new ResponseEntity<>(customerService.view(id),HttpStatus.OK);
+
+		return new ResponseEntity<>(customerService.view(id), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public  ResponseEntity <List<Customer>> viewAll() {
-		
-		return new ResponseEntity<>(customerService.viewAll(),HttpStatus.OK);
+	public ResponseEntity<List<Customer>> viewAll() {
+
+		return new ResponseEntity<>(customerService.viewAll(), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Customer> update(@PathVariable Integer id,@RequestBody  CustomerDto customerDto) {
-		
-		return new ResponseEntity<>(customerService.update(id, customerDto),HttpStatus.OK);
+	public ResponseEntity<Customer> update(@PathVariable Integer id, @RequestBody CustomerDto customerDto) {
+
+		return new ResponseEntity<>(customerService.update(id, customerDto), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Customer> delete(@PathVariable Integer id) {
-		// TODO Auto-generated method stub
-		return new ResponseEntity<>(customerService.delete(id),HttpStatus.OK);
+
+		return new ResponseEntity<>(customerService.delete(id), HttpStatus.OK);
 	}
 
-	
 	public ResponseEntity<Worker> request(Integer customerid, Integer workerid) {
-		// TODO Auto-generated method stub
-		return new ResponseEntity<Worker>(customerService.request(customerid,workerid),HttpStatus.ACCEPTED);
+
+		return new ResponseEntity<Worker>(customerService.request(customerid, workerid), HttpStatus.ACCEPTED);
 	}
-	
 
 }
