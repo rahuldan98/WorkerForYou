@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.org.workerforyou.dto.CustomerDto;
+import com.org.workerforyou.exception.CustomerNotFoundException;
 import com.org.workerforyou.exception.DuplicateCustomerException;
 import com.org.workerforyou.model.Customer;
 import com.org.workerforyou.model.Worker;
@@ -37,26 +38,31 @@ public class CustomerServiceImpl implements ICustomerService{
 
 	@Override
 	public Customer view(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return customerRepository.findById(id).orElseThrow(()-> 
+		new CustomerNotFoundException("Customer not found"));
 	}
 
 	@Override
 	public List<Customer> viewAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return customerRepository.findAll();
 	}
 
 	@Override
 	public Customer update(Integer id, CustomerDto customerDto) {
 		// TODO Auto-generated method stub
-		return null;
+		Customer customer= customerRepository.findById(id).orElseThrow(()-> new CustomerNotFoundException("Customer not found"));
+		customer.setName(customerDto.getName());
+		return customerRepository.save(customer);
 	}
 
 	@Override
 	public Customer delete(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		Customer customer = customerRepository.findById(id).orElseThrow(()-> new CustomerNotFoundException("Customer not found"));
+		customerRepository.delete(customer);
+		return customer;
 	}
 
 	@Override
